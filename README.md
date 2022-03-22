@@ -1,66 +1,77 @@
-# publicIPAddresses
-Reference deployment
-```
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FArmReference%2Fnetwork-publicIPAddresses%2F1.0.0.0%2Fazuredeploy.json)
+# Create Public IP Address
+
+This template creates a Public IP Address in Azure
+
+Public IP addresses allow Internet resources to communicate inbound to Azure resources. Public IP addresses enable Azure resources to communicate to Internet and public-facing Azure services.
+
+## Parameters
+
+Parameter name | Required | Description
+-------------- | -------- | -----------
+StorageAccountName | No       |
+ContainerName  | No       |
+SasToken       | No       |
+
+### StorageAccountName
+
+![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
+
+
+
+### ContainerName
+
+![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
+
+
+
+### SasToken
+
+![Parameter Setting](https://img.shields.io/badge/parameter-optional-green?style=flat-square)
+
+
+
+## Outputs
+
+Name | Type | Description
+---- | ---- | -----------
+armTemplate | object | Fully populated template
+
+## Snippets
+
+### Parameter file
+
+```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "StorageAccountName": {
-      "type": "string",
-      "defaultValue": ""
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "template": "azuredeploy.json"
     },
-    "ContainerName": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "SasToken": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "variables": {
-    "publicIpAddressUri": "[concat('https://',parameters('StorageAccountName'),'.blob.core.windows.net/',parameters('ContainerName'),'/Microsoft.Network','/publicIpAddresses')]"
-  },
-  "resources": [
-    {
-      "name": "DeployPublicIpAddress",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2016-09-01",
-      "dependsOn": [ ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('publicIpAddressUri'), '/publicIpAddresses.json', parameters('SasToken'))]",
-          "contentVersion": "2017.09.01.0"
-        },
-        "parameters": {
-          "name": {
+    "parameters": {
+        "StorageAccountName": {
             "value": ""
-          },
-          "domainNameLabel": {
-            "value": null
-          },
-          "idleTimeoutInMinutes": {
-            "value": 4
-          },
-          "publicIPAddressVersion": {
-            "value": "IPv4"
-          },
-          "publicIPAllocationMethod": {
-            "value": "Dynamic"
-          },
-          "sku": {
-            "value": "Basic"
-          }
+        },
+        "ContainerName": {
+            "value": ""
+        },
+        "SasToken": {
+            "value": ""
         }
-      }
     }
-  ],
-  "outputs": {
-  "publicIpAddresses": {
-      "type": "object",
-      "value": "[reference('DeployPublicIpAddress').outputs.publicIpAddresses.value]"
-    }
-  }
 }
+```
+
+### Command line
+
+#### PowerShell
+
+```powershell
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template> -TemplateParameterFile <path-to-templateparameter>
+```
+
+#### Azure CLI
+
+```text
+az group deployment create --name <deployment-name> --resource-group <resource-group-name> --template-file <path-to-template> --parameters @<path-to-templateparameterfile>
 ```
