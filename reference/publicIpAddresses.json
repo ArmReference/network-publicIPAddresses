@@ -76,7 +76,7 @@
       }
     ],
     "publicIPAddresses": {
-      "apiVersion": "2017-09-01",
+      "apiVersion": "2019-12-01",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[parameters('name')]",
       "location": "[resourceGroup().location]",
