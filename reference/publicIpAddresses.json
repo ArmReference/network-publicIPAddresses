@@ -46,7 +46,10 @@
       "allowedValues": [
         "Basic",
         "Standard"
-      ]
+      ],
+      "metadata": {
+        "description": "Identifies the unique system identifier for each Azure resource."
+      }
     },
     "DependsOn": {
       "type": "array",
@@ -84,11 +87,11 @@
       "properties": "[if(empty(parameters('domainNameLabel')),variables('properties')[0],variables('properties')[1])]"
     }
   },
-  "resources": [ ],
+  "resources": [],
   "outputs": {
-    "publicIPAddresses":{
+    "publicIPAddresses": {
       "type": "object",
-      "value":"[variables('publicIPAddresses')]"
+      "value": "[variables('publicIPAddresses')]"
     }
   }
 }
