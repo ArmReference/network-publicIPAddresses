@@ -1,0 +1,9 @@
+{
+ "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+ "type": "SubscriptionDeployment",
+ "itemDisplayName": "Create Public IP Address",
+ "summary": "This template creates a Public IP Address in Azure",
+ "description": "Public IP addresses allow Internet resources to communicate inbound to Azure resources. Public IP addresses enable Azure resources to communicate to Internet and public-facing Azure services.",
+ "githubUsername": "jeffpatton1971",
+ "dateUpdated": "2022-03-22"
+}
