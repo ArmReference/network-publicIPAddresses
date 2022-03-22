@@ -9,7 +9,7 @@ idleTimeoutInMinutes | Yes      | The idle timeout of the public IP address.
 name           | Yes      | Resource name.
 publicIPAddressVersion | Yes      | The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
 publicIPAllocationMethod | Yes      | The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
-sku            | Yes      |
+sku            | Yes      | Identifies the unique system identifier for each Azure resource.
 DependsOn      | No       | Pass dependencies
 
 ### domainNameLabel
@@ -50,7 +50,7 @@ The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
 
 ![Parameter Setting](https://img.shields.io/badge/parameter-required-orange?style=flat-square)
 
-
+Identifies the unique system identifier for each Azure resource.
 
 - Allowed values: `Basic`, `Standard`
 
